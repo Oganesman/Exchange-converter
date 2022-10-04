@@ -1,0 +1,16 @@
+.biba{
+	background-image: url('https://freepngimg.com/thumb/money/48804-4-exchange-image-free-download-image.png');
+	background-size: 50% 50%;
+	background-repeat: no-repeat;
+	background-position: 50% 85%;
+	height: calc(100vh ) !important;
+}
+
+.nav-link_hover{
+	border-color: var(--bs-nav-tabs-link-hover-border-color);
+}
+
+.exchange__ccy{
+	margin-right: 20px
+}
+

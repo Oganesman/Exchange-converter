@@ -1,0 +1,76 @@
+<div class="biba">
+	<header class="p-3 bg-dark text-white">
+		<div class="container">
+			<div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+				<ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+					<li><a href="#" class="nav-link px-2 text-secondary">Home</a></li>
+				</ul>
+				<div class="exchange">
+					<div *ngFor="let ex of exchanges" class="exchange__ccy">{{ex.ccy}}:
+						<span>{{ex.buy}} / {{ex.sale}}</span>
+					</div>
+				</div>
+			</div>
+		</div>
+	</header>
+
+	<main class="container mt-3">
+		<ul class="nav nav-tabs mb-5">
+			<li class="nav-item">
+				<a class="nav-link active" aria-current="page" href="#">Check for you:</a>
+			</li>
+			<li class="nav-item" (click)="this.ms.buy = true; this.ms.sale = false; this.ms.clearParam()">
+				<a class="nav-link" [class.nav-link_hover]="this.ms.buy" href="#">Buy</a>
+			</li>
+			<li class="nav-item" (click)="this.ms.buy = false; this.ms.sale = true; this.ms.clearParam()">
+				<a class="nav-link" [class.nav-link_hover]="this.ms.sale" href="#">Sale</a>
+			</li>
+		</ul>
+		<form *ngIf="this.ms.buy" class="d-flex justify-content-around">
+			<div class="currency-buy">
+				<input placeholder="With" [(ngModel)]="this.ms.currency"
+					(ngModelChange)="this.ms.changeSumm($event, exchanges)" name="currency" type="text"
+					class="form-control mb-2">
+
+				<select [(ngModel)]="this.ms.selectCurrency"
+					(ngModelChange)="this.ms.changeCurrency(this.ms.selectCurrency,exchanges)" class="form-select"
+					name="selectCurrency">
+					<option *ngFor="let cur of selects">{{cur.currency}}</option>
+				</select>
+			</div>
+			<h3>Buy</h3>
+			<div class="currency-sale">
+				<input placeholder="In" type="text" class="form-control mb-2" value="{{this.ms.result}}">
+				<select [(ngModel)]="this.ms.inSelectCurrency"
+					(ngModelChange)="this.ms.inChangeCurrency(this.ms.inSelectCurrency, exchanges)" name="inSelectCurrency"
+					class="form-select">
+					<option *ngFor="let cur of selects">{{cur.currency}}</option>
+				</select>
+			</div>
+		</form>
+
+		<form *ngIf="this.ms.sale" class="d-flex justify-content-around">
+			<div class="currency-buy">
+				<input placeholder="With" [(ngModel)]="this.ms.currency"
+					(ngModelChange)="this.ms.changeSumm($event, exchanges)" name="currency" type="text"
+					class="form-control mb-2">
+
+				<select [(ngModel)]="this.ms.selectCurrency"
+					(ngModelChange)="this.ms.changeCurrency(this.ms.selectCurrency,exchanges)" class="form-select"
+					name="selectCurrency">
+					<option *ngFor="let cur of selects">{{cur.currency}}</option>
+				</select>
+			</div>
+			<h3>Sale</h3>
+
+			<div class="currency-sale">
+				<input placeholder="In" type="text" class="form-control mb-2" value="{{this.ms.result}}">
+				<select [(ngModel)]="this.ms.inSelectCurrency"
+					(ngModelChange)="this.ms.inChangeCurrency(this.ms.inSelectCurrency, exchanges)" name="inSelectCurrency"
+					class="form-select">
+					<option *ngFor="let cur of selects">{{cur.currency}}</option>
+				</select>
+			</div>
+		</form>
+	</main>
+</div>

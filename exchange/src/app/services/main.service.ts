@@ -7,21 +7,21 @@ import { map } from 'rxjs';
 	providedIn: 'root'
 })
 export class MainService {
-	public buyOrSale: Boolean = true;
+
+
+	public buyOrSale: boolean = true;
 	//result
-	public result: Number | String
+	public result: number | string
 	// input with
-	public currency: String
+	public currency: string
 	// modelChange input
 	public selectSumm: any = ''
 	// select input with
-	public selectCurrency: String = "UAH"
-
+	public selectCurrency: string = "UAH"
 	// select input to
-	public inSelectCurrency: String = "UAH"
+	public inSelectCurrency: string = "UAH"
 
 	constructor(private http: HttpClient) { }
-
 	//function clear Params
 	clearParam() {
 		this.selectSumm = '';
@@ -30,17 +30,22 @@ export class MainService {
 		this.currency = '';
 		this.result = '';
 	}
-	
+
 	// get API
 	getExchanges() {
 		let headers = new HttpHeaders()
 		headers.append('Content-Type', 'application/json')
 		return this.http.get(' https://api.privatbank.ua/p24api/pubinfo?json&exchange&coursid=5', { headers: headers })
-			.pipe(map((data: Object) => data))
+			.pipe(map((data: object) => data))
 	}
 
 	// input with
-	changeSumm(selectSumm: number, exchange: any) {
+	changeSumm(selectSumm: number, exchange: Array<{
+		base_ccy: string,
+		buy: string,
+		ccy: string,
+		sale: string
+	}>) {
 		this.selectSumm = selectSumm
 		if (this.buyOrSale)
 			this.convertBuy(exchange)
@@ -49,7 +54,12 @@ export class MainService {
 	}
 
 	// select with
-	changeCurrency(selectCurrency: String, exchange: any) {
+	changeCurrency(selectCurrency: string, exchange: Array<{
+		base_ccy: string,
+		buy: string,
+		ccy: string,
+		sale: string
+	}>) {
 		this.selectCurrency = selectCurrency
 		if (this.buyOrSale)
 			this.convertBuy(exchange)
@@ -58,7 +68,12 @@ export class MainService {
 	}
 
 	//select to
-	inChangeCurrency(inSelectCurrency: String, exchange: any) {
+	inChangeCurrency(inSelectCurrency: string, exchange: Array<{
+		base_ccy: string,
+		buy: string,
+		ccy: string,
+		sale: string
+	}>) {
 		this.inSelectCurrency = inSelectCurrency
 		if (this.buyOrSale)
 			this.convertBuy(exchange)
@@ -67,14 +82,19 @@ export class MainService {
 	}
 
 	// result convert buy
-	convertBuy(exchanges: any) {
+	convertBuy(exchanges: Array<{
+		base_ccy: string,
+		buy: string,
+		ccy: string,
+		sale: string
+	}>) {
 		const buyWith: any = exchanges.find((el: any) => el.ccy === this.selectCurrency)?.buy
 		const buyIn: any = exchanges.find((el: any) => el.ccy === this.inSelectCurrency)?.buy
 
 		if (this.selectCurrency == this.inSelectCurrency) {
 			return this.result = this.selectSumm
 		}
-		if (this.selectCurrency !== this.inSelectCurrency ) {
+		if (this.selectCurrency !== this.inSelectCurrency) {
 			return this.result = (this.selectSumm * buyWith) / buyIn
 		}
 		if (this.selectSumm == '' || this.currency == undefined) {
@@ -83,7 +103,12 @@ export class MainService {
 	}
 
 	// result convert sale
-	convertSale(exchanges: any) {
+	convertSale(exchanges: Array<{
+		base_ccy: string,
+		buy: string,
+		ccy: string,
+		sale: string
+	}>) {
 		const saleWith: any = exchanges.find((el: any) => el.ccy === this.selectCurrency)?.sale
 		const saleIn: any = exchanges.find((el: any) => el.ccy === this.inSelectCurrency)?.sale
 

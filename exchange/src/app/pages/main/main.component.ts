@@ -10,14 +10,14 @@ export class MainComponent {
 	
 	//get API
 	public exchanges: Array<{
-		base_ccy: String,
-		buy: String,
-		ccy: String,
-		sale: String
+		base_ccy: string,
+		buy: string,
+		ccy: string,
+		sale: string
 	}>
 
 	//select
-	public selects: Array<{ currency: String }> = [
+	public selects: Array<{ currency: string }> = [
 		{ currency: 'UAH' },
 		{ currency: 'USD' },
 		{ currency: 'EUR' },

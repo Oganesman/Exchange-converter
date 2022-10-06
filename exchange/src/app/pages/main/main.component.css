@@ -1,16 +1,193 @@
-.content{
-	background-image: url('https://freepngimg.com/thumb/money/48804-4-exchange-image-free-download-image.png');
-	background-size: 50% 50%;
-	background-repeat: no-repeat;
-	background-position: 50% 85%;
-	height: calc(100vh ) !important;
-}
+@import url('https://fonts.googleapis.com/css2?family=Rubik+Burned&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Rubik&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Mono&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Gemunu+Libre:wght@700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap');
 
-.nav-link_hover{
+.nav-link_hover {
 	border-color: var(--bs-nav-tabs-link-hover-border-color);
 }
 
-.exchange__ccy{
-	margin-right: 20px
+.wrapper {
+	background: radial-gradient(86.56% 115.41% at 20.09% 53.71%, #2C35A2 1%, #252C88 16%, #1B2167 40%, #15194F 62%, #101540 83%, #0F133B 100%);
 }
 
+.content {
+
+	height: 100vh !important;
+	display: grid;
+	grid-template-columns: 1fr;
+	grid-template-rows: 120px 1fr;
+	/* max-width: 1024px;
+	margin: 0 auto; */
+}
+
+/* HEADER */
+.content__header {
+	grid-row: 1/ 2;
+	display: grid;
+	grid-template-columns: 20% 55% 25%;
+	grid-template-rows: 1fr;
+	padding: 0 20px;
+}
+
+/* HEADER logo */
+.content__logo {
+	display: flex;
+	justify-content: end;
+	align-items: center;
+	grid-column: 1/2;
+}
+
+.logo__image {
+	width: 70px;
+	height: 70px;
+	margin-right: 25px;
+}
+
+.logo__image img {
+	width: 100%;
+	height: 100%;
+	object-fit: contain;
+}
+
+.logo__text {
+	font-family: 'Rubik Burned';
+	font-size: 20px;
+	line-height: 19px;
+	color: #FBFBFB;
+}
+
+/* HEADER exchange */
+.content__exchanges {
+	grid-column: 2/3;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+.exchanges__type {
+	font-family: 'Noto Sans Mono';
+	color: #FBFBFB;
+	margin-bottom: 5px;
+}
+
+/* HEADER button */
+.content__sign {
+	display: flex;
+	justify-content: start;
+	align-items: center;
+	grid-column: 3/4;
+	font-family: 'Rubik';
+}
+
+.button__registration {
+	cursor: pointer;
+	width: 150px;
+	height: 40px;
+	border: 2px solid #6DE0F6;
+	border-radius: 20px;
+	margin-right: 30px;
+	background: #6DE0F6;
+	color: #040404;
+}
+
+.button__sign {
+	cursor: pointer;
+	width: 100px;
+	height: 40px;
+	border: 2px solid #6DE0F6;
+	background-color: transparent;
+	border-radius: 20px;
+	color: #FBFBFB;
+	transition: 0.3s;
+}
+
+.button__sign:hover {
+	transition: 0.3s;
+	background: #6DE0F6;
+	color: #040404;
+}
+
+
+/* MAIN */
+.content__main {
+	grid-row: 2/ 3;
+	display: grid;
+	grid-template-rows: 1fr;
+	grid-template-columns: 1fr 1fr;
+}
+
+/* section exchanges */
+.main__exchanges {
+	grid-column: 1/ 2;
+	padding-left: 20px;
+}
+
+/* text */
+.main__info {
+	margin-bottom: 40px;
+}
+
+.main__title {
+	font-family: 'Montserrat';
+	font-weight: 700;
+	font-size: 40px;
+	line-height: 49px;
+	color: #FBFBFB;
+	margin-bottom: 30px;
+}
+
+.main__description {
+	font-family: 'Noto Sans Mono';
+	font-size: 18px;
+	line-height: 21px;
+	color: #FBFBFB;
+}
+
+/* currency-list */
+.currency-list {
+	list-style: none;
+	padding: 0;
+	display: flex;
+}
+
+.list__item {
+	margin: 0 20px 10px 0;
+}
+
+.item__text {
+	color: #FBFBFB;
+	font-family: 'Montserrat';
+	font-weight: 700;
+	font-size: 18px;
+	line-height: 21px;
+}
+
+
+
+
+
+
+
+/* section image */
+.main__image {
+	grid-column: 2/ 3;
+	width: 100%;
+	height: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.image__content {
+	width: 80%;
+	height: 55%;
+
+}
+
+.image__content img {
+	width: 100%;
+	height: 100%;
+}

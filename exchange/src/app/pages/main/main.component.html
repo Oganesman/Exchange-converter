@@ -1,54 +1,76 @@
-<div class="content">
-	<header class="p-3 bg-dark text-white">
-		<div class="container">
-			<div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
-				<ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
-					<li><a href="#" class="nav-link px-2 text-secondary">Home</a></li>
-				</ul>
-				<div class="exchange">
-					<div *ngFor="let ex of exchanges | slice:1 " class="exchange__ccy">{{ex.ccy}}:
-						<span>{{ex.buy}} / {{ex.sale}}</span>
-					</div>
+<div class="wrapper">
+	<div class="content">
+		<header class="content__header">
+			<div class="content__logo">
+				<div class="logo__image"><img src="assets/logo.svg" alt=""></div>
+				<div class="logo__text">GoExchange</div>
+			</div>
+			<div class="content__exchanges">
+				<div *ngFor="let ex of exchanges | slice:1 " class="exchanges__type">
+					<span>{{ex.ccy}}: </span>
+					<span>{{ex.buy}} / {{ex.sale}}</span>
 				</div>
 			</div>
-		</div>
-	</header>
-
-	<main class="container mt-3">
-		<ul class="nav nav-tabs mb-5">
-			<li class="nav-item">
-				<a class="nav-link active" aria-current="page" href="#">Check for you:</a>
-			</li>
-			<li class="nav-item" (click)="this.ms.buyOrSale = true; this.ms.clearParam()">
-				<a class="nav-link" [class.nav-link_hover]="this.ms.buyOrSale" href="#">Buy</a>
-			</li>
-			<li class="nav-item" (click)="this.ms.buyOrSale = false; this.ms.clearParam()">
-				<a class="nav-link" [class.nav-link_hover]="!this.ms.buyOrSale" href="#">Sale</a>
-			</li>
-		</ul>
-
-		<form class="d-flex justify-content-around">
-			<div class="currency-buy">
-				<input placeholder="With" [(ngModel)]="this.ms.currency"
-					(ngModelChange)="this.ms.changeSumm($event, exchanges)" name="currency" type="text"
-					class="form-control mb-2">
-				<select [(ngModel)]="this.ms.selectCurrency"
-					(ngModelChange)="this.ms.changeCurrency(this.ms.selectCurrency,exchanges)" class="form-select"
-					name="selectCurrency">
-					<option (click)="this.ms.clearParam()" *ngFor="let cur of exchanges">{{cur.ccy}}</option>
-				</select>
+			<div class="content__sign">
+				<button class="button__registration">Registration</button>
+				<button class="button__sign">Sign in</button>
 			</div>
-			<h3 *ngIf="this.ms.buyOrSale">Buy</h3>
-			<h3 *ngIf="!this.ms.buyOrSale">Sale</h3>
-			<div class="currency-sale">
-				<input placeholder="In" type="text" class="form-control mb-2" value="{{this.ms.result}}">
-				<select [(ngModel)]="this.ms.inSelectCurrency"
-					(ngModelChange)="this.ms.inChangeCurrency(this.ms.inSelectCurrency, exchanges)" name="inSelectCurrency"
-					class="form-select">
-					<option (click)="this.ms.clearParam()" *ngFor="let cur of exchanges">{{cur.ccy}}</option>
-				</select>
-			</div>
-		</form>
+		</header>
 
-	</main>
+		<main class="content__main">
+			<div class="main__exchanges">
+
+				<div class="main__info">
+					<div class="main__title">
+						Currency <br> exchange quickly & safely
+					</div>
+					<div class="main__description">
+						No extra fee. Account replenishment no longer than 15 minutes
+					</div>
+				</div>
+
+				<div class="main__currency">
+					<ul class="currency-list">
+						<li class="list__item">
+							<div class="item__text">Check for you:</div>
+						</li>
+						<li class="list__item" (click)="this.ms.buyOrSale = true; this.ms.clearParam()">
+							<div class="item__text" [class.nav-link_hover]="this.ms.buyOrSale">Buy</div>
+						</li>
+						<li class="list__item" (click)="this.ms.buyOrSale = false; this.ms.clearParam()">
+							<div class="item__text" [class.nav-link_hover]="!this.ms.buyOrSale">Sale</div>
+						</li>
+					</ul>
+					<form class="d-flex justify-content-around">
+						<div class="currency-buy">
+							<input placeholder="With" [(ngModel)]="this.ms.currency"
+								(ngModelChange)="this.ms.changeSumm($event, exchanges)" name="currency" type="text"
+								class="form-control mb-2">
+							<select [(ngModel)]="this.ms.selectCurrency"
+								(ngModelChange)="this.ms.changeCurrency(this.ms.selectCurrency,exchanges)" class="form-select"
+								name="selectCurrency">
+								<option (click)="this.ms.clearParam()" *ngFor="let cur of exchanges">{{cur.ccy}}</option>
+							</select>
+						</div>
+						<h3 *ngIf="this.ms.buyOrSale">Buy</h3>
+						<h3 *ngIf="!this.ms.buyOrSale">Sale</h3>
+						<div class="currency-sale">
+							<input placeholder="In" type="text" class="form-control mb-2" value="{{this.ms.result}}">
+							<select [(ngModel)]="this.ms.inSelectCurrency"
+								(ngModelChange)="this.ms.inChangeCurrency(this.ms.inSelectCurrency, exchanges)"
+								name="inSelectCurrency" class="form-select">
+								<option (click)="this.ms.clearParam()" *ngFor="let cur of exchanges">{{cur.ccy}}</option>
+							</select>
+						</div>
+					</form>
+				</div>
+			</div>
+
+			<div class="main__image">
+				<div class="image__content">
+					<img src="assets/content.png" alt="">
+				</div>
+			</div>
+		</main>
+	</div>
 </div>

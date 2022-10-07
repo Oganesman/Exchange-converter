@@ -1,6 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { map } from 'rxjs';
+import { find, map } from 'rxjs';
 
 
 @Injectable({
@@ -8,6 +8,8 @@ import { map } from 'rxjs';
 })
 export class MainService {
 
+	// BTC in UAH
+	public btcShow: any
 
 	public buyOrSale: boolean = true;
 	//result
@@ -121,5 +123,18 @@ export class MainService {
 		if (this.selectSumm == '' || this.currency == undefined) {
 			return this.result = ''
 		}
+	}
+	// result BTC in UAH
+	converBtc(takeBtc: Array<{
+		base_ccy: string,
+		buy: string,
+		ccy: string,
+		sale: string
+	}>) {
+		const btc = Number(takeBtc[0].buy)
+		const usd = Number(takeBtc[takeBtc.length - 1].buy)
+		this.btcShow = (btc * usd).toString()
+		this.btcShow = this.btcShow.split('.')[0]
+		this.btcShow = (this.btcShow.match(/.{1,3}/g)).join(' ');
 	}
 }

@@ -6,26 +6,26 @@ import { Routes, RouterModule } from '@angular/router';
 import { MainComponent } from './pages/main/main.component';
 import { FormsModule } from '@angular/forms';
 import { HeaderComponent } from './pages/main/header/header.component';
-import { MainListComponent } from './pages/main/main-list/main-list.component';
+import { ArrowSvgComponent } from './pages/main/arrow-svg/arrow-svg.component';
 
 const routing: Routes = [
-	{path: '', component: MainComponent}
+	{ path: '', component: MainComponent }
 ]
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    MainComponent,
-    HeaderComponent,
-    MainListComponent
-  ],
-  imports: [
-    BrowserModule,
-	 HttpClientModule,
-	 FormsModule,
-	 RouterModule.forRoot(routing)
-  ],
-  providers: [],
-  bootstrap: [AppComponent]
+	declarations: [
+		AppComponent,
+		MainComponent,
+		HeaderComponent,
+  ArrowSvgComponent,
+	],
+	imports: [
+		BrowserModule,
+		HttpClientModule,
+		FormsModule,
+		RouterModule.forRoot(routing)
+	],
+	providers: [],
+	bootstrap: [AppComponent]
 })
 export class AppModule { }

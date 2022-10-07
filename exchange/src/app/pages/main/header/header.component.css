@@ -24,7 +24,7 @@
 
 .logo__image img {
 	width: 32px;
-	height:32px;
+	height: 32px;
 	object-fit: contain;
 }
 
@@ -85,4 +85,51 @@
 	transition: 0.3s;
 	background: #6DE0F6;
 	color: #040404;
+}
+
+
+
+@media (min-width: 1280px) {
+	.logo__image{
+		width: 40px;
+		height: 40px;
+	}
+	.logo__image img{
+		width: 40px;
+		height: 40px;
+	}
+	.logo__text{
+		font-size: 22px;
+	}
+	.content__header {
+		grid-template-columns: 210px 600px 280px;
+	}
+	.content__exchanges{
+		flex-direction: row;
+		justify-content: space-around;
+	}
+	.exchanges__type{
+		font-size: 18px;
+		margin: 0;
+	}
+}
+
+
+/* !MOBILE */
+@media (max-width: 860px) {
+	.content__header{
+		grid-template-columns: none;
+	}
+	.logo__text{
+		display: none;
+	}
+	.button__registration{
+		display: none;
+	}
+}
+
+@media (max-width: 415px) {
+	.content__sign{
+		display: none;
+	}
 }

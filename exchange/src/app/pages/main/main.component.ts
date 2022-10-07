@@ -7,7 +7,7 @@ import { MainService } from 'src/app/services/main.service';
 	styleUrls: ['./main.component.css']
 })
 export class MainComponent {
-	
+
 	//get API
 	public exchanges: Array<{
 		base_ccy: string,
@@ -15,7 +15,6 @@ export class MainComponent {
 		ccy: string,
 		sale: string
 	}>
-
 	//select
 	public selects: Array<{ currency: string }> = [
 		{ currency: 'UAH' },
@@ -26,16 +25,19 @@ export class MainComponent {
 	constructor(public ms: MainService) {
 		this.ms.getExchanges()
 			.subscribe((data: any) => {
+				this.ms.converBtc(data)
 				this.exchanges = data.splice(0, 2)
-				this.exchanges.unshift({base_ccy:'UAH',buy:'1',ccy:'UAH',sale:'1'})
+				this.exchanges.unshift({ base_ccy: 'UAH', buy: '1', ccy: 'UAH', sale: '1' })
 				this.exchanges.map(el => {
 					el.buy = el.buy.slice(0, 5)
 					el.sale = el.sale.slice(0, 5)
 				})
-				if(this.ms.buyOrSale)
-				this.ms.convertBuy(this.exchanges)
+				if (this.ms.buyOrSale)
+					this.ms.convertBuy(this.exchanges)
 				else
-				this.ms.convertSale(this.exchanges)
+					this.ms.convertSale(this.exchanges)
 			})
 	}
+
+
 }

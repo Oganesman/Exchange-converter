@@ -193,6 +193,7 @@
 	.content {
 		padding: 20px;
 		height: initial;
+		max-width: 1400px;
 	}
 
 	.content__main {

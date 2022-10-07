@@ -1,25 +1,10 @@
 <div class="wrapper">
 	<div class="content">
-		<header class="content__header">
-			<div class="content__logo">
-				<div class="logo__image"><img src="assets/logo.svg" alt=""></div>
-				<div class="logo__text">GoExchange</div>
-			</div>
-			<div class="content__exchanges">
-				<div *ngFor="let ex of exchanges | slice:1 " class="exchanges__type">
-					<span>{{ex.ccy}}: </span>
-					<span>{{ex.buy}} / {{ex.sale}}</span>
-				</div>
-			</div>
-			<div class="content__sign">
-				<button class="button__registration">Registration</button>
-				<button class="button__sign">Sign in</button>
-			</div>
-		</header>
+
+		<app-header class="header" [exchanges]="exchanges"></app-header>
 
 		<main class="content__main">
 			<div class="main__exchanges">
-
 				<div class="main__info">
 					<div class="main__title">
 						Currency <br> exchange quickly & safely
@@ -30,17 +15,7 @@
 				</div>
 
 				<div class="main__currency">
-					<ul class="currency-list">
-						<li class="list__item">
-							<div class="item__text">Check for you:</div>
-						</li>
-						<li class="list__item" (click)="this.ms.buyOrSale = true; this.ms.clearParam()">
-							<div class="item__text" [class.nav-link_hover]="this.ms.buyOrSale">Buy</div>
-						</li>
-						<li class="list__item" (click)="this.ms.buyOrSale = false; this.ms.clearParam()">
-							<div class="item__text" [class.nav-link_hover]="!this.ms.buyOrSale">Sale</div>
-						</li>
-					</ul>
+					<app-main-list></app-main-list>
 					<form class="d-flex justify-content-around">
 						<div class="currency-buy">
 							<input placeholder="With" [(ngModel)]="this.ms.currency"

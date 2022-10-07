@@ -5,6 +5,8 @@ import { AppComponent } from './app.component';
 import { Routes, RouterModule } from '@angular/router';
 import { MainComponent } from './pages/main/main.component';
 import { FormsModule } from '@angular/forms';
+import { HeaderComponent } from './pages/main/header/header.component';
+import { MainListComponent } from './pages/main/main-list/main-list.component';
 
 const routing: Routes = [
 	{path: '', component: MainComponent}
@@ -13,7 +15,9 @@ const routing: Routes = [
 @NgModule({
   declarations: [
     AppComponent,
-    MainComponent
+    MainComponent,
+    HeaderComponent,
+    MainListComponent
   ],
   imports: [
     BrowserModule,

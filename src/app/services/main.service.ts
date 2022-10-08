@@ -96,8 +96,8 @@ export class MainService {
 		if (this.selectCurrency == this.inSelectCurrency) {
 			return this.result = this.selectSumm
 		}
-		if (this.selectCurrency !== this.inSelectCurrency) {
-			return this.result = (this.selectSumm * buyWith) / buyIn
+		if (this.selectCurrency !== this.inSelectCurrency && this.selectSumm != '') {
+			return this.result = ((this.selectSumm * buyWith) / buyIn).toFixed(2) 
 		}
 		if (this.selectSumm == '' || this.currency == undefined) {
 			return this.result = ''
@@ -117,8 +117,8 @@ export class MainService {
 		if (this.inSelectCurrency == this.selectCurrency) {
 			return this.result = this.selectSumm
 		}
-		if (this.selectCurrency !== this.inSelectCurrency) {
-			return this.result = (this.selectSumm * saleWith) / saleIn
+		if (this.selectCurrency !== this.inSelectCurrency && this.selectSumm != '') {
+			return this.result = ((this.selectSumm * saleWith) / saleIn).toFixed(2)
 		}
 		if (this.selectSumm == '' || this.currency == undefined) {
 			return this.result = ''

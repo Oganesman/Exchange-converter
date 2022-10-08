@@ -208,6 +208,10 @@
 
 /* !MOBILE */
 @media (max-width: 860px) {
+	.content {
+		min-height: 100vh;
+		height: inherit;
+	}
 	.content__main {
 		margin-top: 20px;
 	}

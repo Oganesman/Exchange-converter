@@ -6,7 +6,7 @@
 	<div class="content__exchanges">
 		<div *ngFor="let ex of exchanges | slice:1 " class="exchanges__type">
 			<span>{{ex.ccy}}: </span>
-			<span>{{ex.buy}} / {{ex.sale}}</span>
+			<span>{{ex.rateBuy}} / {{ex.rateSell}}</span>
 		</div>
 	</div>
 	<div class="content__sign">

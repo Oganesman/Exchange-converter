@@ -9,28 +9,34 @@ import { MainService } from 'src/app/services/main.service';
 export class MainComponent {
 
 	//get API
+	// public exchanges: any
 	public exchanges: Array<{
-		base_ccy: string,
-		buy: string,
+		rateBuy: number,
+		rateSell: number,
 		ccy: string,
-		sale: string
 	}>
 	//select
-	public selects: Array<{ currency: string }> = [
-		{ currency: 'UAH' },
-		{ currency: 'USD' },
-		{ currency: 'EUR' },
-	]
-
+	
 	constructor(public ms: MainService) {
 		this.ms.getExchanges()
 			.subscribe((data: any) => {
-				this.ms.converBtc(data)
+				// this.ms.converBtc(data)
 				this.exchanges = data.splice(0, 2)
-				this.exchanges.unshift({ base_ccy: 'UAH', buy: '1', ccy: 'UAH', sale: '1' })
-				this.exchanges.map(el => {
-					el.buy = el.buy.slice(0, 5)
-					el.sale = el.sale.slice(0, 5)
+				this.exchanges[0].ccy = 'USD';
+				this.exchanges[1].ccy = 'EUR';
+				this.exchanges.map((el: any) => {
+					delete el.currencyCodeA,
+					delete el.currencyCodeB,
+					delete el.date
+				}
+				)
+
+				this.exchanges.unshift({ rateBuy: 1, rateSell: 1, ccy: 'UAH'})
+				console.log(this.exchanges);
+
+				this.exchanges.map((el: any) => {
+					el.rateBuy = el.rateBuy.toFixed(2)
+					el.rateSell = el.rateSell.toFixed(2)
 				})
 				if (this.ms.buyOrSale)
 					this.ms.convertBuy(this.exchanges)

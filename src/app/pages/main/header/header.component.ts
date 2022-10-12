@@ -8,10 +8,9 @@ import { Component, Input } from '@angular/core';
 export class HeaderComponent {
 	
 	@Input() exchanges: Array<{
-		base_ccy: string,
-		buy: string,
+		rateBuy: number,
+		rateSell: number,
 		ccy: string,
-		sale: string
 	}>
 
 	constructor() { }

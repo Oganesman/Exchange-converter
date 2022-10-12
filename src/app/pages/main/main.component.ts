@@ -30,10 +30,7 @@ export class MainComponent {
 					delete el.date
 				}
 				)
-
 				this.exchanges.unshift({ rateBuy: 1, rateSell: 1, ccy: 'UAH'})
-				console.log(this.exchanges);
-
 				this.exchanges.map((el: any) => {
 					el.rateBuy = el.rateBuy.toFixed(2)
 					el.rateSell = el.rateSell.toFixed(2)
